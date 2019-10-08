@@ -49,6 +49,10 @@ namespace WykoBot
 
         private void SaveChatIds()
         {
+            if (File.Exists(chatFile))
+            {
+                File.Delete(chatFile);
+            }
             IFormatter formatter = new BinaryFormatter();
             using (Stream stream = new FileStream(chatFile, FileMode.CreateNew, FileAccess.Write, FileShare.None))
             {
